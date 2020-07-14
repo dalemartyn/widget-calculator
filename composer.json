@@ -1,7 +1,13 @@
 {
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
   "require" : {},
   "require-dev": {
     "heroku/heroku-buildpack-php": "*",
-    "squizlabs/php_codesniffer": "3.*"
+    "squizlabs/php_codesniffer": "3.*",
+    "phpunit/phpunit": "^9"
   }
 }

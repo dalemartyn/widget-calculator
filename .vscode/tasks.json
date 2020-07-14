@@ -4,7 +4,17 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label": "php",
+        "label": "tests",
+        "type": "shell",
+        "command": "./vendor/bin/phpunit tests",
+        "problemMatcher": [],
+        "group": {
+          "kind": "test",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "serve",
         "type": "shell",
         "command": "cd web && php -S localhost:8080",
         "problemMatcher": [],
