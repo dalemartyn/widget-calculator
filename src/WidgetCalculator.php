@@ -22,14 +22,7 @@ class WidgetCalculator
     {
         $this->calculateSolutions($target);
         $bestSolution = $this->getBestSolution();
-
-        $this->logSolution($target, $bestSolution);
         return $bestSolution;
-    }
-
-    private function logSolution($target, $solution)
-    {
-        echo("\nTarget: " . $target .  '. Solution: [' . join(',', $solution) . ']');
     }
 
     /**
