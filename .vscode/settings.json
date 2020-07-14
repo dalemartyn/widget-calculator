@@ -1,0 +1,4 @@
+{
+  "phpcbf.standard": "PSR12",
+  "phpcs.standard": "PSR12"
+}
