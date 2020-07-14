@@ -30,7 +30,10 @@
     <h1>Widget Calculator</h1>
 
     <p>
-        A coding challenge. Rules and code at <a href="https://github.com/dalemartyn/widget-calculator">https://github.com/dalemartyn/widget-calculator</a>.
+        A coding challenge. Rules and code at
+        <a href="https://github.com/dalemartyn/widget-calculator">
+            https://github.com/dalemartyn/widget-calculator
+        </a>.
     </p>
 
     <?php

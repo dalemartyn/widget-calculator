@@ -1,6 +1,6 @@
 # Widget Calculator
 
-A coding challenge for stickee/magpie technology.
+A coding challenge for stickee/magpie technology. [https://dales-widget-calculator.herokuapp.com/](https://dales-widget-calculator.herokuapp.com/)
 
 ## The challenge
 
