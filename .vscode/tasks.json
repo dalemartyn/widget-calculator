@@ -6,7 +6,7 @@
       {
         "label": "tests",
         "type": "shell",
-        "command": "./vendor/bin/phpunit tests",
+        "command": "composer run-script test",
         "problemMatcher": [],
         "group": {
           "kind": "test",

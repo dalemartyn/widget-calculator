@@ -1,6 +1,6 @@
 {
-  "name": "Start on Heroku: PHP",
-  "description": "A barebones PHP app that makes use of the Silex web framework",
-  "repository": "https://github.com/heroku/php-getting-started",
+  "name": "Widget Calculator",
+  "description": "Coding challenge for magpie technology",
+  "repository": "https://github.com/dalemartyn/widget-calculator",
   "addons": []
 }

@@ -1,4 +1,6 @@
 {
+  "name": "dalemartyn/widget-calculator",
+  "description": "Coding challenge for magpie technology",
   "autoload": {
     "classmap": [
       "src/"
@@ -9,5 +11,9 @@
     "heroku/heroku-buildpack-php": "*",
     "squizlabs/php_codesniffer": "3.*",
     "phpunit/phpunit": "^9"
+  },
+  "scripts": {
+    "test": "phpunit tests",
+    "test-quantity": "phpunit --filter testQuantity tests/WidgetCalculatorTest.php"
   }
 }
