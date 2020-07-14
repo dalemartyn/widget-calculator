@@ -1,28 +1,38 @@
-# php-getting-started
+# Widget Calculator
 
-A barebones PHP app that makes use of the [Silex](http://silex.sensiolabs.org/) web framework, which can easily be deployed to Heroku.
+A coding challenge for stickee/magpie technology.
 
-This application supports the [Getting Started with PHP on Heroku](https://devcenter.heroku.com/articles/getting-started-with-php) article - check it out.
+## The challenge
 
-## Deploying
+Wally’s Widget Company is a widget wholesaler. They sell widgets in a variety of pack sizes:
 
-Install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
+ - 250 widgets
+ - 500 widgets
+ - 1,000 widgets
+ - 2,000 widgets
+ - 5,000 widgets
 
-```sh
-$ git clone git@github.com:heroku/php-getting-started.git # or clone your own fork
-$ cd php-getting-started
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
+Their customers can order any number of widgets, but they will always be given complete packs.
 
-or
+The company wants to be able to fulfil all orders according to the following rules:
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+1. Only whole packs can be sent. Packs cannot be broken open.
+2. Within the constraints of Rule 1 above, send out no more widgets than necessary to fulfil
+the order.
+3. Within the constraints of Rules 1 & 2 above, send out as few packs as possible to fulfil each
+order.
 
-## Documentation
+So, for example:
 
-For more information about using PHP on Heroku, see these Dev Center articles:
+| Number of Widgets ordered  | Correct packs to send | Incorrect solution(s)      |
+|----------------------------|-----------------------|----------------------------|
+| 1                          | 250 x 1               | 500 x 1 (too many widgets) |
+| 250                        | 250 x 1               | 500 x 1 (too many widgets) |
+| 251                        | 500 x 1               | **250 x 2 (too many packs)** |
+| 501                        | 500 x 1<br>250 x 1    | 1,000 x 1 (too many widgets)<br>250 x 3 (too many packs) |
+| 12,001                     | 5,000 x 2<br>2,000 x 1<br>250 x 1| 5,000 x 3 (too many widgets) |
 
-- [Getting Started with PHP on Heroku](https://devcenter.heroku.com/articles/getting-started-with-php)
-- [PHP on Heroku](https://devcenter.heroku.com/categories/php)
+Write a program that will tell Wally’s Widgets what packs to send out, for any given order size.
+
+Keep your program flexible, so that new packs sizes may be added, or existing pack sizes changed
+or discarded, at a later date with minimal adjustments to your program.
