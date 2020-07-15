@@ -21,6 +21,7 @@ class RecursiveSolverTest extends TestCase
         $this->assertSame($solver->solve(501), [500, 250]);
         $this->assertSame($solver->solve(2250), [2000, 250]);
         $this->assertSame($solver->solve(12001), [5000, 5000, 2000, 250]);
+        $this->assertSame($solver->solve(29700), [5000, 5000, 5000, 5000, 5000, 2000, 2000, 500, 250]);
 
         $solver = new RecursiveSolver([
             250,

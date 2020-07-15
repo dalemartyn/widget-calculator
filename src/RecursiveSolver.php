@@ -4,28 +4,19 @@ namespace WallysWidgets;
 
 class RecursiveSolver extends AbstractSolver
 {
-    private const PACKAGE_LIMIT = 6;
+    private const PACKAGE_LIMIT = 10;
 
-    public function solve($target)
+    public function solve(int $target)
     {
-        $this->calculateSolutions($target);
-        $bestSolution = $this->getBestSolution($this->solutions);
-        return $bestSolution;
-    }
-
-    /**
-     * Calculate the possible solutions.
-     */
-    private function calculateSolutions($target)
-    {
-        $this->solutions = [];
+        $this->solution = null;
         $this->solveBranch($target, []);
+        return $this->solution;
     }
 
     /**
      * Recursive function used to calculate the solutions.
      */
-    private function solveBranch($target, $initialPackages)
+    private function solveBranch(int $target, array $initialPackages)
     {
         $packSizes = $this->getPackageSizes($target);
         foreach ($packSizes as $packSize) {
@@ -34,7 +25,7 @@ class RecursiveSolver extends AbstractSolver
             $newTarget = $target - $packSize;
 
             if ($newTarget <= 0) {
-                $this->solutions[] = $packages;
+                $this->maybeCacheSolution($packages);
                 continue;
             } else {
                 if (count($packages) < self::PACKAGE_LIMIT) {
@@ -42,5 +33,37 @@ class RecursiveSolver extends AbstractSolver
                 }
             }
         }
+    }
+
+    /**
+     * Cache our solution if its better than the current solution.
+     */
+    private function maybeCacheSolution(array $packages)
+    {
+        if (
+            !$this->solution ||
+            $this->isBetterSolution($packages, $this->solution)
+        ) {
+            $this->solution = $packages;
+        }
+    }
+
+    private function isBetterSolution(array $packages, array $currentPackages)
+    {
+        $widgets = array_sum($packages);
+        $currentWidgets = array_sum($currentPackages);
+
+        if ($widgets < $currentWidgets) {
+            return true;
+        }
+
+        if (
+            $widgets == $currentWidgets &&
+            count($packages) < count($currentPackages)
+        ) {
+            return true;
+        }
+
+        return false;
     }
 }

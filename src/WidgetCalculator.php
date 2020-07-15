@@ -6,7 +6,7 @@ class WidgetCalculator
 {
     private $solver;
 
-    public function __construct($packageSizes)
+    public function __construct(array $packageSizes)
     {
         sort($packageSizes);
         $this->solver = new RecursiveSolver($packageSizes);
@@ -17,7 +17,7 @@ class WidgetCalculator
      *   1) the fewest amount of widgets necessary to fulfil the order
      *   2) the smallest amount of packages to fulfil the above amount of widgets.
      */
-    public function calculatePackages($target)
+    public function calculatePackages(int $target)
     {
         $solution = $this->solver->solve($target);
 
@@ -28,7 +28,7 @@ class WidgetCalculator
      * Group the packages.
      *  e.g [5000 => 2, 2000 => 1]
      */
-    private static function formatSolution($solution)
+    private static function formatSolution(array $solution)
     {
         $s = [];
 
