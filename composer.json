@@ -2,9 +2,9 @@
   "name": "dalemartyn/widget-calculator",
   "description": "Coding challenge for magpie technology",
   "autoload": {
-    "classmap": [
-      "src/"
-    ]
+    "psr-4": {
+      "WallysWidgets\\": "src/"
+    }
   },
   "require" : {
     "php": "^7.4.0"
@@ -15,6 +15,8 @@
     "phpunit/phpunit": "^9"
   },
   "scripts": {
-    "test": "phpunit tests"
+    "test": "phpunit tests",
+    "test-calculator": "phpunit --filter testCalculator tests/WidgetCalculatorTest.php",
+    "test-recursive-solver": "phpunit --filter testSolver tests/RecursiveSolverTest.php"
   }
 }

@@ -13,9 +13,15 @@
         font-style: normal;
         unicode-range: U+0000-00A4, U+0020, U+00A0, U+2013-201E, U+2022, U+2026, U+00D7, U+2192;
     }
+
     :root {
         font-family: IBM Plex Sans, sans-serif;
+        background-color: #fff;
+        color: #1f292e;
+        color-scheme: light;
+        font-size: 16px;
     }
+
     body {
         max-width: 480px;
         margin: 0 auto;
@@ -24,6 +30,30 @@
 
     form {
         margin-top: 40px;
+    }
+
+    a {
+        color: #2f9e8c;
+    }
+
+    h1 {
+        font-size: calc(2.25rem);
+    }
+
+    h2 {
+        font-size: calc(1.5rem);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            background-color: #111618;
+            color: #fff;
+            color-scheme: dark;
+        }
+
+        a {
+            color: #5cbcae;
+        }
     }
     </style>
 </head>
@@ -45,6 +75,8 @@
         } elseif ($widgets > 30000) {
             $widgets = 30000;
         }
+    } else {
+        $widgets = 0;
     }
     ?>
 
@@ -59,7 +91,7 @@
 
     use WallysWidgets\WidgetCalculator;
 
-    if (is_int($widgets)) {
+    if ($widgets > 0) {
         $calculator = new WidgetCalculator([
             250,
             500,
@@ -76,8 +108,8 @@
 
         <ul>
             <?php
-            foreach ($packages as $package) {
-                echo '<li>' . $package . '</li>';
+            foreach ($packages as $package => $count) {
+                echo '<li>' . $package . ' × ' . $count . '</li>';
             }
             ?>
         </ul>

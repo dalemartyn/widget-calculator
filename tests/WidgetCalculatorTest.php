@@ -15,12 +15,12 @@ class WidgetCalculatorTest extends TestCase
             2000,
             5000
         ]);
-        $this->assertSame($calculator->calculatePackages(1), [250]);
-        $this->assertSame($calculator->calculatePackages(250), [250]);
-        $this->assertSame($calculator->calculatePackages(251), [500]);
-        $this->assertSame($calculator->calculatePackages(501), [500, 250]);
-        $this->assertSame($calculator->calculatePackages(2250), [2000, 250]);
-        $this->assertSame($calculator->calculatePackages(12001), [5000, 5000, 2000, 250]);
+        $this->assertSame($calculator->calculatePackages(1), [250 => 1]);
+        $this->assertSame($calculator->calculatePackages(250), [250 => 1]);
+        $this->assertSame($calculator->calculatePackages(251), [500 => 1]);
+        $this->assertSame($calculator->calculatePackages(501), [500 => 1, 250 => 1]);
+        $this->assertSame($calculator->calculatePackages(2250), [2000 => 1, 250 => 1]);
+        $this->assertSame($calculator->calculatePackages(12001), [5000 => 2, 2000 => 1, 250 => 1]);
 
         $calculator = new WidgetCalculator([
             250,
@@ -30,6 +30,6 @@ class WidgetCalculatorTest extends TestCase
             2000,
             5000
         ]);
-        $this->assertSame($calculator->calculatePackages(2999), [1999, 1000]);
+        $this->assertSame($calculator->calculatePackages(2999), [1999 => 1, 1000 => 1]);
     }
 }
