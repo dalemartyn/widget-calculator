@@ -19,6 +19,7 @@
     body {
         max-width: 480px;
         margin: 0 auto;
+        padding: 20px;
     }
 
     form {
