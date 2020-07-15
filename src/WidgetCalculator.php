@@ -24,6 +24,10 @@ class WidgetCalculator
         return $this->formatSolution($solution);
     }
 
+    /**
+     * Group the packages.
+     *  e.g [5000 => 2, 2000 => 1]
+     */
     private static function formatSolution($solution)
     {
         $s = [];
