@@ -35,19 +35,6 @@ class RecursiveSolver extends AbstractSolver
         }
     }
 
-    /**
-     * Cache our solution if its better than the current solution.
-     */
-    private function maybeCacheSolution(array $packages)
-    {
-        if (
-            !$this->solution ||
-            $this->isBetterSolution($packages, $this->solution)
-        ) {
-            $this->solution = $packages;
-        }
-    }
-
     private function isBetterSolution(array $packages, array $currentPackages)
     {
         $widgets = array_sum($packages);

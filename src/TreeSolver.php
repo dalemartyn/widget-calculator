@@ -4,7 +4,6 @@ namespace WallysWidgets;
 
 class TreeSolver extends AbstractSolver
 {
-    private array $queue = [];
 
     /**
      * This solution uses a branch and bound algorithm.
@@ -13,7 +12,7 @@ class TreeSolver extends AbstractSolver
      */
     public function solve(int $target)
     {
-        $this->packageSizes = $this->getPackageSizes($target);
+        $this->treePackageSizes = $this->getPackageSizes($target);
         $this->solution = null;
         $this->queue = [];
 
@@ -22,12 +21,14 @@ class TreeSolver extends AbstractSolver
         /**
          * Do a breadth first search.
          * Take each node off the queue:
-         *   Test its solution, and record if its the best.
+         *   Test its solution, and record if its the best,
+         *      break if its exactly the target, as we are using breadth-first search
+         *      there won't be any solutions with fewer packages.
          *   Then add its children to the queue, unless we are bigger than the target.
          */
         while ($node = $this->pop()) {
             $packages = $node->getPackageList();
-            if (array_sum($packages) > $target) {
+            if (array_sum($packages) >= $target) {
                 $this->maybeCacheSolution($packages);
             } else {
                 $this->addPackages($node);
@@ -37,7 +38,7 @@ class TreeSolver extends AbstractSolver
         return $this->solution;
     }
 
-    private function push($node)
+    private function push(PackageNode $node)
     {
         $this->queue[] = $node;
     }
@@ -52,7 +53,7 @@ class TreeSolver extends AbstractSolver
         $maxPackageValue = $parent ? $parent->value : INF;
 
         $packageSizes = array_filter(
-            $this->packageSizes,
+            $this->treePackageSizes,
             function ($packageValue) use ($maxPackageValue) {
                 return $packageValue <= $maxPackageValue;
             }

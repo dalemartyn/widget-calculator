@@ -4,7 +4,7 @@ namespace WallysWidgets;
 
 abstract class AbstractSolver
 {
-    protected $packageSizes;
+    private $packageSizes;
 
     public function __construct(array $packageSizes)
     {

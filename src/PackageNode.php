@@ -5,7 +5,7 @@ namespace WallysWidgets;
 class PackageNode
 {
 
-    public function __construct($value, $parent)
+    public function __construct(int $value, ?PackageNode $parent)
     {
         $this->value = $value;
         $this->parent = $parent;
@@ -14,11 +14,13 @@ class PackageNode
     public function getPackageList()
     {
         $packages = [$this->value];
+        $node = $this;
 
-        while ($node = $this->parent) {
-            $packages[] = $node;
+        while ($node = $node->parent) {
+            $packages[] = $node->value;
         }
 
+        rsort($packages);
         return $packages;
     }
 }

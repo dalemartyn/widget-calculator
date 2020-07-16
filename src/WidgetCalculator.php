@@ -9,7 +9,7 @@ class WidgetCalculator
     public function __construct(array $packageSizes)
     {
         sort($packageSizes);
-        $this->solver = new RecursiveSolver($packageSizes);
+        $this->solver = new TreeSolver($packageSizes);
     }
 
     /**
