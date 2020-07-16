@@ -28,8 +28,11 @@ class TreeSolver extends AbstractSolver
          */
         while ($node = $this->pop()) {
             $packages = $node->getPackageList();
-            if (array_sum($packages) >= $target) {
+            if (array_sum($packages) > $target) {
                 $this->maybeCacheSolution($packages);
+            } elseif (array_sum($packages) === $target) {
+                $this->solution = $packages;
+                break;
             } else {
                 $this->addPackages($node);
             }
