@@ -17,6 +17,7 @@
   "scripts": {
     "test": "phpunit tests",
     "test-calculator": "phpunit --filter testCalculator tests/WidgetCalculatorTest.php",
-    "test-recursive-solver": "phpunit --filter testSolver tests/RecursiveSolverTest.php"
+    "test-recursive-solver": "phpunit --filter testSolver tests/RecursiveSolverTest.php",
+    "test-tree-solver": "phpunit --filter testSolver tests/TreeSolverTest.php"
   }
 }

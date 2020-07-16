@@ -31,4 +31,36 @@ abstract class AbstractSolver
 
         return array_reverse($sizes);
     }
+
+    /**
+     * Cache our solution if its better than the current solution.
+     */
+    protected function maybeCacheSolution(array $packages)
+    {
+        if (
+            !$this->solution ||
+            $this->isBetterSolution($packages, $this->solution)
+        ) {
+            $this->solution = $packages;
+        }
+    }
+
+    private function isBetterSolution(array $packages, array $currentPackages)
+    {
+        $widgets = array_sum($packages);
+        $currentWidgets = array_sum($currentPackages);
+
+        if ($widgets < $currentWidgets) {
+            return true;
+        }
+
+        if (
+            $widgets == $currentWidgets &&
+            count($packages) < count($currentPackages)
+        ) {
+            return true;
+        }
+
+        return false;
+    }
 }
