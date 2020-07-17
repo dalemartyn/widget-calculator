@@ -12,7 +12,7 @@ class TreeSolver extends AbstractSolver
      */
     public function solve(int $target)
     {
-        $this->treePackageSizes = $this->getPackageSizes($target);
+        $this->target = $target;
         $this->solution = null;
         $this->queue = [];
 
@@ -53,14 +53,9 @@ class TreeSolver extends AbstractSolver
 
     private function addPackages(?PackageNode $parent)
     {
-        $maxPackageValue = $parent ? $parent->value : INF;
+        $target = $parent ? $parent->value : $this->target;
 
-        $packageSizes = array_filter(
-            $this->treePackageSizes,
-            function ($packageValue) use ($maxPackageValue) {
-                return $packageValue <= $maxPackageValue;
-            }
-        );
+        $packageSizes = $this->getPackageSizes($target);
 
         foreach ($packageSizes as $packageSize) {
             $node = new PackageNode($packageSize, $parent);

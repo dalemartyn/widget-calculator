@@ -18,7 +18,7 @@ abstract class AbstractSolver
      * Get the package sizes relevant to the target.
      * Excludes package sizes that are overly large.
      */
-    protected function getPackageSizes(int $target)
+    protected function getPackageSizes(?int $target)
     {
         $sizes = [];
 
