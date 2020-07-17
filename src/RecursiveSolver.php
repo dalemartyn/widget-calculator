@@ -34,23 +34,4 @@ class RecursiveSolver extends AbstractSolver
             }
         }
     }
-
-    private function isBetterSolution(array $packages, array $currentPackages)
-    {
-        $widgets = array_sum($packages);
-        $currentWidgets = array_sum($currentPackages);
-
-        if ($widgets < $currentWidgets) {
-            return true;
-        }
-
-        if (
-            $widgets == $currentWidgets &&
-            count($packages) < count($currentPackages)
-        ) {
-            return true;
-        }
-
-        return false;
-    }
 }
