@@ -16,7 +16,7 @@ class TreeSolver extends AbstractSolver
         $this->solution = null;
         $this->queue = [];
 
-        $this->addPackages(null);
+        $this->addPackages();
 
         /**
          * Do a breadth first search.
@@ -51,7 +51,7 @@ class TreeSolver extends AbstractSolver
         return array_shift($this->queue);
     }
 
-    private function addPackages(?PackageNode $parent)
+    private function addPackages(PackageNode $parent = null)
     {
         $target = $parent ? $parent->value : $this->target;
 
